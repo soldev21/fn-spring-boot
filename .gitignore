@@ -33,5 +33,4 @@ hs_err_pid*
 .idea/vcs.xml
 fn-spring-boot.iml
 pom.xml
-src/
 target/generated-sources/
