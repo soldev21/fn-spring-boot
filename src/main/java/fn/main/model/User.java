@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 @Data
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Component
 public class User {
     private String username;
     private String password;

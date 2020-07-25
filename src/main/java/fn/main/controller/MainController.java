@@ -2,13 +2,18 @@ package fn.main.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fn.main.model.Tracker;
 import fn.main.model.User;
 import fn.main.service.LoginService;
+import fn.main.util.MyLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 public class MainController {
@@ -19,7 +24,16 @@ public class MainController {
     @Autowired
     LoginService loginService;
 
+    @Autowired
+    Tracker tracker;
     ObjectMapper mapper1 = new ObjectMapper();
+
+
+
+    @RequestMapping("/")
+    public String all(){
+        return tracker.getId();
+    }
 
     @RequestMapping(value = "/hello/{endpoint}")
     public String test(@PathVariable("endpoint") String endpoint, @RequestBody String body) throws JsonProcessingException {
@@ -40,6 +54,7 @@ public class MainController {
 
     @RequestMapping(value = "/hello/login")
     public String login(@RequestBody User user) {
+        MyLogger.info(tracker.format(user.toString()));
         return loginService.login(user);
     }
 
