@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -20,6 +23,12 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        System.out.println("in application class "+service.getId());
+//        RestTemplate restTemplate = new RestTemplate();
+//        ResponseEntity<String> responseEntity =
+//                restTemplate.exchange("http://localhost:8080/postTest", HttpMethod.POST,null,String.class);
+//        System.out.println(responseEntity.getBody());
+//        responseEntity =
+//                restTemplate.exchange("http://localhost:8080/postTest", HttpMethod.POST,null,String.class);
+//        System.out.println(responseEntity.getBody());
     }
 }

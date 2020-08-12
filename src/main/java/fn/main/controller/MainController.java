@@ -9,10 +9,7 @@ import fn.main.util.MyLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -31,8 +28,8 @@ public class MainController {
 
 
     @RequestMapping("/")
-    public String all(){
-        return tracker.getId();
+    public Object all(){
+        return loginService.getAllUsers();
     }
 
     @RequestMapping(value = "/hello/{endpoint}")
@@ -54,8 +51,15 @@ public class MainController {
 
     @RequestMapping(value = "/hello/login")
     public String login(@RequestBody User user) {
-        MyLogger.info(tracker.format(user.toString()));
+//        MyLogger.info2(tracker.format(user.toString()));
         return loginService.login(user);
+    }
+
+    static int c;
+
+    @PostMapping("/postTest")
+    public String postExample(){
+        return "greeting" + ++c;
     }
 
 //    @RequestMapping(value = "/hello/a")

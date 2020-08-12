@@ -2,6 +2,7 @@ package fn.main.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fn.main.dao.UserDao;
+import fn.main.entity.UserEntity;
 import fn.main.model.Tracker;
 import fn.main.model.User;
 import fn.main.util.MyLogger;
@@ -25,7 +26,11 @@ public class LoginService {
     Tracker tracker;
 
     public String login(User user) {
-        MyLogger.info(tracker.format(user.toString()));
+//        MyLogger.info(tracker.format(user.toString()));
         return userDao.validateCredentials(user.getUsername(),user.getPassword()) ? "Success" : "Fail";
+    }
+
+    public Iterable<UserEntity> getAllUsers(){
+        return userDao.findAll();
     }
 }
